@@ -169,24 +169,24 @@ if let calcFn = getCalculator("*") {
 //     }
 // })
 // Når URL-en er http://www.vg.no som i eksemplet, skal beskrivelsen være "Verdens gang". Dersom URL-en er http://www.aftenposten.no skal beskrivelsen være "Aftenposten". I andre tilfeller er beskrivelsen nil og Fant ikke noen beskrivelse skal skrives ut
+/*
+func request(url: String, beskrivelseClosure: (String -> ())) -> () {
+    if url == "http://www.vg.no" {
+        return beskrivelseClosure("Verdens gang")
+    } else if url == "http://www.aftenposten.no" {
+        return beskrivelseClosure("Aftenposten")
+    } else {
+        return beskrivelseClosure(nil)
+    }
+}
 
-//func request(url: String, beskrivelseClosure: (String -> ())) -> String? {
-//    if url == "http://www.vg.no" {
-//        return beskrivelseClosure("Verdens gang")
-//    } else if url == "http://www.aftenposten.no" {
-//        return "Aftenposten"
-//    } else {
-//        return nil
-//    }
-//}
-//
-//request("http://www.vg.no", { beskrivelse in
-//    if beskrivelse {
-//        println(beskrivelse)
-//    } else {
-//        println("Fant ikke noen beskrivelse")
-//    }
-//})
+request("http://www.vg.no", { beskrivelse in
+    if beskrivelse {
+        println(beskrivelse)
+    } else {
+        println("Fant ikke noen beskrivelse")
+    }
+})*/
 
 
 // OPPGAVE 9
@@ -223,13 +223,48 @@ Lag en `signLog` metode som legger igjen en beskjed i cacheloggen
 // I was here!
 
 
+struct Coordinate {
+    let lat: Double
+    let long: Double
+    
+    init(lat: Double, long: Double) {
+        self.lat = lat
+        self.long = long
+    }
+}
 
+class GeoCache {
+    let coordinate: Coordinate
+    let name: String
+    let hint: String
+    var log = [String?]()
+    
+    init(coordinate: Coordinate, name: String, hint: String) {
+        self.coordinate = coordinate
+        self.name = name
+        self.hint = hint
+    }
+    
+    func signLog(message: String) {
+        log.append(message)
+    }
+    
+    func description() {
+        println(name)
+        println("\(coordinate.lat) \(coordinate.long)")
+        println("Hint: \(hint)")
+        for loggmelding in log {
+            println("\(loggmelding)")
+        }
+    }
+}
 
+let coordinate = Coordinate(lat: 59.925880, long: 10.750511)
+let cache = GeoCache(coordinate: coordinate, name: "Hjemme", hint: "Stua")
 
-
-
-
-
+cache.signLog("Noen var her...")
+cache.signLog("Jeg var her!")
+cache.description()
 
 
 
