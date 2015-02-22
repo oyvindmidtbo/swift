@@ -46,7 +46,7 @@ repeatCharacter3(bokstav: Character("W"))
 
 
 // OPPGAVE 4
-// Lag en funksjon som kan ta inn et variabelt antall parametere, og sum regner ut produktet av disse: 
+// Lag en funksjon som kan ta inn et variabelt antall parametere, og som regner ut produktet av disse:
 // calculate(2, 5, 5) // --> 50
 // calculate(10, 10) // --> 100
 
@@ -124,35 +124,39 @@ println("Produkt: \(resultat.produkt), Sum: \(resultat.sum)")
 //     println(calcFn([3, 6, 9]))
 // }
 
-//func getCalculator(typeOperator: String) -> ([Int]) -> Int? {
-//    func calcFn(tallArray: [Int]) -> Int? {
-//        if typeOperator == "+" {
-//            var sum = 0
-//            for tall in tallArray {
-//                sum += tall
-//            }
-//            return sum
-//        } else if typeOperator == "*" {
-//            var produkt = 1
-//            for tall in tallArray {
-//                produkt *= tall
-//            }
-//            return produkt
-//        } else {
-//            return nil
-//        }
-//    }
-//    
-//    return calcFn
-//}
-//
-//if let calcFn = getCalculator("+") {
-//    println(calcFn([3, 6, 9]))
-//}
-//
-//if let calcFn = getCalculator("*") {
-//    println(calcFn([3, 6, 9]))
-//}
+func getCalculator(typeOperator: String) -> (([Int]) -> Int?)? {
+    func calcFn(tallArray: [Int]) -> Int? {
+        if typeOperator == "+" {
+            var sum = 0
+            for tall in tallArray {
+                sum += tall
+            }
+            return sum
+        } else if typeOperator == "*" {
+            var produkt = 1
+            for tall in tallArray {
+                produkt *= tall
+            }
+            return produkt
+        } else {
+            return nil
+        }
+    }
+
+    if (typeOperator == "+" || typeOperator == "*") {
+        return calcFn
+    } else {
+        return nil
+    }
+}
+
+if let calcFn = getCalculator("+") {
+    println(calcFn([3, 6, 9]))
+}
+
+if let calcFn = getCalculator("*") {
+    println(calcFn([3, 6, 9]))
+}
 
 
 // OPPGAVE 8
@@ -166,23 +170,23 @@ println("Produkt: \(resultat.produkt), Sum: \(resultat.sum)")
 // })
 // Når URL-en er http://www.vg.no som i eksemplet, skal beskrivelsen være "Verdens gang". Dersom URL-en er http://www.aftenposten.no skal beskrivelsen være "Aftenposten". I andre tilfeller er beskrivelsen nil og Fant ikke noen beskrivelse skal skrives ut
 
-func request(url: String, beskrivelseClosure: (String -> ())) -> String? {
-    if url == "http://www.vg.no" {
-        return beskrivelseClosure("Verdens gang")
-    } else if url == "http://www.aftenposten.no" {
-        return "Aftenposten"
-    } else {
-        return nil
-    }
-}
-
-request("http://www.vg.no", { beskrivelse in
-    if beskrivelse {
-        println(beskrivelse)
-    } else {
-        println("Fant ikke noen beskrivelse")
-    }
-})
+//func request(url: String, beskrivelseClosure: (String -> ())) -> String? {
+//    if url == "http://www.vg.no" {
+//        return beskrivelseClosure("Verdens gang")
+//    } else if url == "http://www.aftenposten.no" {
+//        return "Aftenposten"
+//    } else {
+//        return nil
+//    }
+//}
+//
+//request("http://www.vg.no", { beskrivelse in
+//    if beskrivelse {
+//        println(beskrivelse)
+//    } else {
+//        println("Fant ikke noen beskrivelse")
+//    }
+//})
 
 
 // OPPGAVE 9
