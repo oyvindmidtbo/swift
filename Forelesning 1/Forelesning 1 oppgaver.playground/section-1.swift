@@ -130,8 +130,16 @@ let words = ["apple", "organges", "banana"]
 
 for word in words {
     println(word)
+    var bokstavindex: Int = 1
     for character in reverse(word) {
-        println(character)
+        var mellomrom: String = ""
+        for index in 1...countElements(word)-1 {
+            mellomrom += " "
+        }
+        if bokstavindex != 1 {
+            println("\(mellomrom)\(character)")
+        }
+        bokstavindex++;
     }
 }
 
