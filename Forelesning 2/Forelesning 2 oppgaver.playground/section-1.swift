@@ -265,20 +265,3 @@ let cache = GeoCache(coordinate: coordinate, name: "Hjemme", hint: "Stua")
 cache.signLog("Noen var her...")
 cache.signLog("Jeg var her!")
 cache.description()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
