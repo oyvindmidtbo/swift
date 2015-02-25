@@ -145,3 +145,62 @@ for animal in animalArray {
         println("Dyret (\(animal.type)) er en hund")
     }
 }
+
+// OPPGAVE 4
+// Lag det som er nødvendig for at denne if statementen fungerer
+// Lag et eksempel på begge utfall av if
+/*
+if let street = westerdals.students?.first?.address?.street {
+    println("Studenten bor i \(street).")
+} else {
+    println("Kunne ikke hente gatenavn")
+}
+*/
+
+class Address {
+    var street: String
+    var zipCode: String
+    var postalPlace: String
+    
+    init(street: String, zipCode: String, postalPlace: String) {
+        self.street = street
+        self.zipCode = zipCode
+        self.postalPlace = postalPlace
+    }
+}
+
+class Student {
+    var firstName: String
+    var lastName: String
+    var address: Address?
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+
+}
+
+class Skole {
+    var students: [Student]?
+}
+
+var westerdals = Skole()
+
+if let street = westerdals.students?.first?.address?.street {
+    println("Studenten bor i \(street).")
+} else {
+    println("Kunne ikke hente gatenavn")
+}
+
+var address = Address(street: "Maridalsveien 33L", zipCode: "0175", postalPlace: "Oslo")
+var student = Student(firstName: "Øyvind", lastName: "Midtbø")
+
+student.address = address
+westerdals.students = [student]
+
+if let street = westerdals.students?.first?.address?.street {
+    println("Studenten bor i \(street).")
+} else {
+    println("Kunne ikke hente gatenavn")
+}
