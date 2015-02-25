@@ -92,19 +92,56 @@ class Time {
 var time1 = Time(hour: 10, minute: 20, second: 30)
 var time2 = Time()
 
+// OPPGAVE 3
+// 1. Lag en base klasse Animal, der du finner måter å bruke final og required som beskrevet i slidene
+// 2. Lag en metode for å sove, en metode for å lage en lyd med println og en metode for å spise
+// 3. Lag deretter en subclass, for eksempel Bird som arver av base klassen Animal
+// 4. Bruk override for å skrive over base klassen funksjonaliteten
+// 5. Lag en subclass til som arver av Animal base klassen
+// 6. Lag en array med begge subklassene og foreach over dem,
+// 7. Identifiser hva slags type det er og skriv det ut ved hjelp av println
 
+class Animal {
+    let type: String
+    var description: String {
+        return "Jeg er et dyr."
+    }
+    
+    required init(type: String) {
+        self.type = type
+    }
+    
+    final func sleep() {
+        print("SLEEP")
+    }
+    
+    func makeSound() {
+        println("SOUND")
+    }
+    
+    func eat() {
+        println("EAT")
+    }
+}
 
+class Bird : Animal {
+    override var description: String {
+        return "Jeg er en fugl."
+    }
+}
 
+class Dog : Animal {
+    override var description: String {
+        return "Jeg er en hund."
+    }
+}
 
+var animalArray: [Animal] = [Bird(type: "ørn"), Dog(type: "golden retriever")]
 
-
-
-
-
-
-
-
-
-
-
-
+for animal in animalArray {
+    if animal is Bird {
+        println("Dyret (\(animal.type)) er en fugl")
+    } else if animal is Dog {
+        println("Dyret (\(animal.type)) er en hund")
+    }
+}
