@@ -204,3 +204,58 @@ if let street = westerdals.students?.first?.address?.street {
 } else {
     println("Kunne ikke hente gatenavn")
 }
+
+// OPPGAVE 5
+// Lag det som er nødvendig for at denne if statementen fungerer
+/*
+if westerdals.students?.first?.address?.printStreet() != nil {
+    println("Det gikk bra å kalle print funksjonen")
+} else {
+    println("Jeg kunne ikke kalle metoden")
+}
+*/
+
+class Address2 {
+    var street: String
+    var zipCode: String
+    var postalPlace: String
+    
+    init(street: String, zipCode: String, postalPlace: String) {
+        self.street = street
+        self.zipCode = zipCode
+        self.postalPlace = postalPlace
+    }
+    
+    func printStreet() {
+        println("Gaten er \(street)")
+    }
+}
+
+class Student2 {
+    var firstName: String
+    var lastName: String
+    var address: Address2?
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+}
+
+class Skole2 {
+    var students: [Student2]?
+}
+
+var westerdals2 = Skole2()
+var address2 = Address2(street: "Maridalsveien 33L", zipCode: "0175", postalPlace: "Oslo")
+var student2 = Student2(firstName: "Øyvind", lastName: "Midtbø")
+
+student2.address = address2
+westerdals2.students = [student2]
+
+if westerdals2.students?.first?.address?.printStreet() != nil {
+    println("Det gikk bra å kalle print funksjonen")
+} else {
+    println("Jeg kunne ikke kalle metoden")
+}
