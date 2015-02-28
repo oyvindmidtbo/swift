@@ -315,3 +315,65 @@ if (westerdals3.students?.first?.address = otherAddress) != nil {
 } else {
     println("Det var ikke mulig å sette en ny addresse")
 }
+
+// OPPGAVE 7
+// Lag det som er nødvendig for at denne if statementen fungerer
+// Lag et eksempel på begge utfall av if
+/*
+if let fullStreetName = westerdals.students?.first?.address?.buildFullStreetName() {
+    println("Fullstendig gatenavn er \(fullStreetName)")
+} else {
+    println("Kunne ikke hente fullstendig gatenavn")
+}
+*/
+
+class Address4 {
+    var street: String
+    var zipCode: String
+    var postalPlace: String
+    
+    init(street: String, zipCode: String, postalPlace: String) {
+        self.street = street
+        self.zipCode = zipCode
+        self.postalPlace = postalPlace
+    }
+    
+    func printStreet() {
+        println("Gaten er \(street)")
+    }
+    
+    func buildFullStreetName() -> String? {
+        //return nil
+        return "\(street), \(zipCode) \(postalPlace)"
+    }
+}
+
+class Student4 {
+    var firstName: String
+    var lastName: String
+    var address: Address4?
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+}
+
+class Skole4 {
+    var students: [Student4]?
+}
+
+var westerdals4 = Skole4()
+var address4 = Address4(street: "Maridalsveien 33L", zipCode: "0175", postalPlace: "Oslo")
+var student4 = Student4(firstName: "Øyvind", lastName: "Midtbø")
+
+student4.address = address4
+westerdals4.students = [student4]
+
+if let fullStreetName = westerdals4.students?.first?.address?.buildFullStreetName() {
+    println("Fullstendig gatenavn er \(fullStreetName)")
+} else {
+    // For at denne skal bli skrevet ut må buildFullStreetName returnere nil
+    println("Kunne ikke hente fullstendig gatenavn")
+}
