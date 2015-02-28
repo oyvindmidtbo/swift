@@ -259,3 +259,59 @@ if westerdals2.students?.first?.address?.printStreet() != nil {
 } else {
     println("Jeg kunne ikke kalle metoden")
 }
+
+// OPPGAVE 6
+// Lag det som er nødvendig for at denne if statementen fungerer
+/*
+if (westerdals.students?.first?.address = otherAddress) != nil {
+    println("Du satt en ny addresse")
+} else {
+    println("Det var ikke mulig å sette en ny addresse")
+}
+*/
+
+class Address3 {
+    var street: String
+    var zipCode: String
+    var postalPlace: String
+    
+    init(street: String, zipCode: String, postalPlace: String) {
+        self.street = street
+        self.zipCode = zipCode
+        self.postalPlace = postalPlace
+    }
+    
+    func printStreet() {
+        println("Gaten er \(street)")
+    }
+}
+
+class Student3 {
+    var firstName: String
+    var lastName: String
+    var address: Address3?
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+}
+
+class Skole3 {
+    var students: [Student3]?
+}
+
+var westerdals3 = Skole3()
+var address3 = Address3(street: "Maridalsveien 33L", zipCode: "0175", postalPlace: "Oslo")
+var otherAddress = Address3(street: "Gamle Drammensvei 274D", zipCode: "1383", postalPlace: "Asker")
+var student3 = Student3(firstName: "Øyvind", lastName: "Midtbø")
+
+student3.address = address3
+westerdals3.students = [student3]
+
+if (westerdals3.students?.first?.address = otherAddress) != nil {
+    println("Du satt en ny addresse")
+} else {
+    println("Det var ikke mulig å sette en ny addresse")
+}
